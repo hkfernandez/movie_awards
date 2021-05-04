@@ -1,0 +1,19 @@
+{
+  "name": "movie_awards",
+  "version": "1.0.0",
+  "description": "an app for nominating your favorite movie",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hkfernandez/movie_awards.git"
+  },
+  "author": "Hector Fernandez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hkfernandez/movie_awards/issues"
+  },
+  "homepage": "https://github.com/hkfernandez/movie_awards#readme"
+}
