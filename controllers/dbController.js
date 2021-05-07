@@ -3,8 +3,11 @@ const db = require("../models");
 const dbControllerMethods = {
   findAll: (req, res) => {
     console.log('--------------------findAll db route hit');
-    db.findAll()
-      .then(returnedMovies => res.json(returnedMovies))
+    db.find()
+      .then(returnedMovies => {
+        //console.log('------------------returned Movies', returnedMovies);
+        res.json(returnedMovies)
+      })
   },
   create: (req, res) => {
     console.log('--------------------create db route hit with req.body ', req.body);

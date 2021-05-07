@@ -23,7 +23,10 @@ const Home = () => {
   }
 
   return (
-    <SubmissionForm />
+    <>
+      <a href="/nominatedMovies">Click Here to See The Nominated Moves</a>
+      <SubmissionForm />
+    </>
   )
 };
 
