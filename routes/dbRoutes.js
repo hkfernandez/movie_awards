@@ -8,4 +8,7 @@ router.route("/findAll")
 router.route('/addMovie')
   .post(db.create);
 
+router.route('/deleteMovie')
+  .post(db.delete);
+
 module.exports = router;

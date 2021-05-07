@@ -15,7 +15,7 @@ const NominatedMoviesList = () => {
         if (!nominatedMovies) {
           return
         } else {
-          console.log('movies returned from db', nominatedMovies);
+          //console.log('movies returned from db', nominatedMovies);
           setNomineesList(nominatedMovies);
         }
       })
@@ -24,13 +24,14 @@ const NominatedMoviesList = () => {
 
   return (
     <>
-      {console.log('nomineesList in return statemet', nomineesList)}
+      {/*{console.log('nomineesList in return statemet', nomineesList)}*/}
       {nomineesList ?
         nomineesList.data.map(movie => {
           return <MovieDetails
             title={movie.Title}
-            id={movie._id}
-            key={movie.id} />
+            id={movie.imdbID}
+            key={movie.id}
+            db={dbCalls} />
         }
         )
         :
@@ -41,6 +42,7 @@ const NominatedMoviesList = () => {
           </a>
         </>
       }
+      <a href='/'>Back to Nomination Page</a>
     </>
   )
 }

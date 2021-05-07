@@ -17,6 +17,15 @@ const dbControllerMethods = {
         console.log('------------------movie added to db');
         res.json(addedMoive);
       })
+  },
+  delete: (req, res) => {
+    console.log('--------------------delete db route hit with req.body ', req.body);
+    let movieToDelete = req.body
+    db.findOneAndDelete(movieToDelete)
+      .then(deletedMoive => {
+        console.log('------------------movie removed from db');
+        res.json(deletedMoive);
+      })
   }
 }
 
