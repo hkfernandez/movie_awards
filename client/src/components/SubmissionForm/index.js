@@ -8,7 +8,7 @@ const SubmissionForm = () => {
   const [userSearchString, setUserSearchString] = useState('');
 
   useEffect(() => {
-    console.log(returnedMovieInfo);
+    //console.log(returnedMovieInfo);
   }, [returnedMovieInfo])
 
   const handleInputChange = inputChange => {

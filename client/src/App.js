@@ -1,10 +1,10 @@
 import './App.css';
-import SubmissionForm from './components/SubmissionForm';
+import Home from './components/Home';
 
 function App() {
   return (
     <>
-      <SubmissionForm />
+      <Home />
     </>
   );
 }
