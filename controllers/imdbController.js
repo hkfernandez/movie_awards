@@ -7,15 +7,15 @@ const apiKey = process.env.IMDB_API_KEY;
 const imdbControllerMethods = {
   findMovie: (req, res, next) => {
     //console.log('--------------------findMovie route hit');
-    console.log('--------------------req.body ', req.body);
+    //console.log('--------------------req.body ', req.body);
     const userSearchString = req.body.movieName
-    console.log('---------------------', userSearchString);
+    //console.log('---------------------', userSearchString);
     axios.get(
       `http://www.omdbapi.com/?apikey=${apiKey}&t=${userSearchString}`
     )
       .then(
         function (returnedMovie) {
-          console.log('--------------------returned movie title ', returnedMovie.data.Title);
+          //console.log('--------------------returned movie title ', returnedMovie.data.Title);
           res.json(returnedMovie.data);
         }
       )

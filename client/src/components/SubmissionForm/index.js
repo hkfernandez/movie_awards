@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import apiCall from '../../utils/apiCalls'
+import apiCall from '../../utils/apiCalls';
+import ImdbMovie from '../ImdbMovie'
 
 const SubmissionForm = () => {
 
@@ -19,10 +20,9 @@ const SubmissionForm = () => {
     //console.log('------------------userSearchString', userSearchString);
     apiCall.imdbMovieSearch({ movieName: userSearchString })
       .then((imdbMovieData) => {
-        console.log('data returned to React component ', imdbMovieData);
+        //console.log('data returned to React component ', imdbMovieData);
         setReturnedMovieInfo(imdbMovieData.data);
       })
-      //.then(() => console.log(returnedMovieInfo))
       .catch(err => console.log(err));
   }
 
@@ -37,8 +37,9 @@ const SubmissionForm = () => {
         <div>
           <button type="submit" value="Submit" onClick={handleMovieSearch}>Find Your Movie</button>
         </div>
-        {returnedMovieInfo.data ? <div>{returnedMovieInfo.Title}</div> : <div>No Movie Search</div>}
       </form>
+      <ImdbMovie
+        movieInfo={returnedMovieInfo} />
     </>
   )
 }
