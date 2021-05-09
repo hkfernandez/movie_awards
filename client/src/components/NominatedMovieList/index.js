@@ -25,7 +25,6 @@ const NominatedMoviesList = () => {
   return (
     <>
       <div><a href='/'>Back to Nomination Page</a></div>
-      {/*{console.log('nomineesList in return statemet', nomineesList)}*/}
       {nomineesList ?
         nomineesList.data.map(movie => {
           return <MovieDetails
