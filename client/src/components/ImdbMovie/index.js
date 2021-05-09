@@ -1,11 +1,13 @@
+import { PromiseProvider } from "mongoose";
 import React, { useState, useEffect } from "react";
 import dbCall from '../../utils/dbCalls';
 
-const ImdbMovie = ({ movieInfo, nominatedmovieids }) => {
+const ImdbMovie = ({ movieInfo, nominatedmovieids, updateNomineesList }) => {
   //console.log('movie info in ImdbMovie component', movieInfo);
 
   const [statusMessage, setStatusMessage] = useState('');
   const [movieHasBeenNominated, setMovieHasBeenNominated] = useState(false);
+
 
   useEffect(() => {
     checkIfMovieHasBeenNominated(movieInfo.imdbID);
@@ -18,6 +20,7 @@ const ImdbMovie = ({ movieInfo, nominatedmovieids }) => {
       .then((movieAddedToDb) => {
         if (movieAddedToDb) {
           setStatusMessage(`You have nominated ${movieInfo.Title} for the Shopify Ecommerce Movie Awards`);
+          updateNomineesList();
         } else {
           return;
         }
@@ -26,7 +29,7 @@ const ImdbMovie = ({ movieInfo, nominatedmovieids }) => {
   }
 
   const checkIfMovieHasBeenNominated = (imdbID) => {
-    console.log('CHECKING IF MOVIE HAS BEEN NOMINATED');
+    //console.log('CHECKING IF MOVIE HAS BEEN NOMINATED');
     if (nominatedmovieids.indexOf(imdbID) === -1) {
       //console.log('current movie imdbID', imdbID);
       //console.log('index of current over in array of nominated moive ids', nominatedmovieids.indexOf(imdbID));

@@ -30,7 +30,7 @@ const NominatedMoviesList = () => {
           return <MovieDetails
             title={movie.Title}
             id={movie.imdbID}
-            key={movie.id}
+            key={movie.imdbID}
             db={dbCalls}
             updateNomineesList={updateNomineesList} />
         }

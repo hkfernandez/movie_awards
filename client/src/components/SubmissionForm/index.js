@@ -40,7 +40,8 @@ const SubmissionForm = (props) => {
       </form>
       <ImdbMovie
         movieInfo={returnedMovieInfo}
-        nominatedmovieids={props.nominatedmovieids} />
+        nominatedmovieids={props.nominatedmovieids}
+        updateNomineesList={props.updateNomineesList} />
     </>
   )
 }
