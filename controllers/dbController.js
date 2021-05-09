@@ -1,11 +1,18 @@
 const db = require("../models");
 
 const dbControllerMethods = {
+  findOne: (req, res) => {
+    console.log('--------------------findOne db route hit', req.body);
+    db.findOne()
+      .then(returnedMovie => {
+        //console.log('movie returned in controller', returnedMovie);
+        res.json(returnedMovie)
+      })
+  },
   findAll: (req, res) => {
     console.log('--------------------findAll db route hit');
     db.find()
       .then(returnedMovies => {
-        //console.log('------------------returned Movies', returnedMovies);
         res.json(returnedMovies)
       })
   },
@@ -23,7 +30,6 @@ const dbControllerMethods = {
     let movieToDelete = req.body
     db.findOneAndDelete(movieToDelete)
       .then(deletedMoive => {
-        console.log('------------------movie removed from db');
         res.json(deletedMoive);
       })
   }

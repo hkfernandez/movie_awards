@@ -2,6 +2,9 @@ const router = require("express").Router();
 const db = require("../controllers/dbController");
 
 
+router.route("/findOne")
+  .get(db.findOne);
+
 router.route("/findAll")
   .get(db.findAll);
 

@@ -4,12 +4,13 @@ import SubmissionForm from '../SubmissionForm';
 
 const Home = () => {
 
-  const [nomineesList, setNomineesList] = useState([])
+  //const [nomineesList, setNomineesList] = useState([]);
+  const [nominatedMovieIds, setNominatedMovieIds] = useState([]);
 
   useEffect(() => {
-    //updateNomineesList();
-    console.log('nominees list current state', nomineesList);
-  }, [nomineesList])
+    updateNomineesList();
+    console.log('ids of nominated movies', nominatedMovieIds);
+  }, [])
 
   const updateNomineesList = () => {
     db.findAll()
@@ -17,15 +18,29 @@ const Home = () => {
         if (!nominatedMovies) {
           return
         } else {
-          setNomineesList(nominatedMovies);
+          console.log('nominated movies', nominatedMovies);
+          buildArrOfMovieIdsInDb(nominatedMovies.data);
+          console.log('array of movie ids should be built');
+          //setNomineesList(nominatedMovies);
         }
       })
+  }
+
+
+  const buildArrOfMovieIdsInDb = (movies) => {
+    let movieIdsArr = [];
+    movies.map(movie => {
+      console.log('building movie id array with ', movie.imdbID);
+      return movieIdsArr.push(movie.imdbID);
+    })
+    setNominatedMovieIds(movieIdsArr);
   }
 
   return (
     <>
       <a href="/nominatedMovies">Click Here to See The Nominated Moves</a>
-      <SubmissionForm />
+      <SubmissionForm
+        nominatedmovieids={nominatedMovieIds} />
     </>
   )
 };

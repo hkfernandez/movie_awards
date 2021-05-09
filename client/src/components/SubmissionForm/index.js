@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import apiCall from '../../utils/apiCalls';
 import ImdbMovie from '../ImdbMovie'
 
-const SubmissionForm = () => {
+const SubmissionForm = (props) => {
 
   const [returnedMovieInfo, setReturnedMovieInfo] = useState({});
   const [userSearchString, setUserSearchString] = useState('');
@@ -39,7 +39,8 @@ const SubmissionForm = () => {
         </div>
       </form>
       <ImdbMovie
-        movieInfo={returnedMovieInfo} />
+        movieInfo={returnedMovieInfo}
+        nominatedmovieids={props.nominatedmovieids} />
     </>
   )
 }

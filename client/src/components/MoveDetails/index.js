@@ -2,11 +2,13 @@ const MovieDetails = props => {
 
   const handleDeleteMovie = (event) => {
     event.preventDefault();
-    console.log('handle deleteMovie event', event);
+    //console.log('handle deleteMovie event', event);
     let movieId = { imdbID: event.target.dataset.movieid };
-    props.db.deleteMovie(movieId);
+    props.db.deleteMovie(movieId)
+      .then(props.updateNomineesList)
+      .catch(err => console.log(err));
   }
-  console.log('props passed to MovieDetails component', props);
+  //console.log('props passed to MovieDetails component', props);
   return (
     <>
       <h2>{props.title}</h2>

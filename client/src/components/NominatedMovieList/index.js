@@ -31,12 +31,13 @@ const NominatedMoviesList = () => {
             title={movie.Title}
             id={movie.imdbID}
             key={movie.id}
-            db={dbCalls} />
+            db={dbCalls}
+            updateNomineesList={updateNomineesList} />
         }
         )
         :
         <>
-          <h2>{`No movies have been nominated yet :(`}</h2>
+          <h2>{`No movies have been nominated :(`}</h2>
           <a href='/'>
             Click Here to Find and Nominate Your Favorite Movie!
           </a>
