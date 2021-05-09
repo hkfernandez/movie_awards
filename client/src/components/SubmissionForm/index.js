@@ -22,8 +22,16 @@ const SubmissionForm = (props) => {
       .then((imdbMovieData) => {
         //console.log('data returned to React component ', imdbMovieData);
         setReturnedMovieInfo(imdbMovieData.data);
+        setUserSearchString('');
+        return imdbMovieData.data;
       })
       .catch(err => console.log(err));
+  }
+
+  const clearMovieData = () => {
+    setReturnedMovieInfo({});
+    setUserSearchString('');
+    return;
   }
 
   return (
@@ -41,7 +49,9 @@ const SubmissionForm = (props) => {
       <ImdbMovie
         movieInfo={returnedMovieInfo}
         nominatedmovieids={props.nominatedmovieids}
-        updateNomineesList={props.updateNomineesList} />
+        updateNomineesList={props.updateNomineesList}
+        clearMovieData={clearMovieData}
+      />
     </>
   )
 }

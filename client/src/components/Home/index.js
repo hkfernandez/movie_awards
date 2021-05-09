@@ -4,16 +4,12 @@ import SubmissionForm from '../SubmissionForm';
 
 const Home = () => {
 
-  //const [nomineesList, setNomineesList] = useState([]);
-  const [moviesInDb, setMoviesInDb] = useState([]);
+  //const [moviesInDb, setMoviesInDb] = useState([]);
   const [nominatedMovieIds, setNominatedMovieIds] = useState([]);
   const [fiveMoviesNominated, setFiveMoviesNominated] = useState(false);
 
   useEffect(() => {
     updateNomineesList();
-    //buildArrOfMovieIdsInDb(moviesInDb);
-    //checkIfFiveMoviesHaveBeenNominated();
-    //console.log('ids of nominated movies', nominatedMovieIds);
   }, [])
 
   useEffect(() => {
@@ -23,25 +19,21 @@ const Home = () => {
   const updateNomineesList = () => {
     db.findAll()
       .then((nominatedMovies) => {
-        console.log('nominated movies', nominatedMovies);
+        //console.log('nominated movies', nominatedMovies);
         if (!nominatedMovies) {
           return;
         } else {
-          //console.log('nominated movies', nominatedMovies);
-          setMoviesInDb(nominatedMovies.data);
+          //setMoviesInDb(nominatedMovies.data);
+          buildArrOfMovieIdsInDb(nominatedMovies.data);
           return nominatedMovies;
-          //buildArrOfMovieIdsInDb(nominatedMovies.data);
-          //console.log('array of movie ids should be built');
-          //setNomineesList(nominatedMovies);
         }
       })
-      .then((nominatedMovies) => {
-        buildArrOfMovieIdsInDb(nominatedMovies.data);
-      })
+    //.then((nominatedMovies) => {
+    //})
   }
 
   const buildArrOfMovieIdsInDb = (movies) => {
-    console.log('building array of movies in db with', movies);
+    //console.log('building array of movies in db with', movies);
     let movieIdsArr = [];
     movies.map(movie => {
       //console.log('building movie id array with ', movie.imdbID);
@@ -52,8 +44,8 @@ const Home = () => {
   }
 
   const checkIfFiveMoviesHaveBeenNominated = () => {
-    console.log('checking if five movies have been nominated', nominatedMovieIds.length);
-    console.log('five movies have been nominated?', fiveMoviesNominated);
+    //console.log('checking if five movies have been nominated', nominatedMovieIds.length);
+    //console.log('five movies have been nominated?', fiveMoviesNominated);
     if (nominatedMovieIds.length > 4) {
       setFiveMoviesNominated(true);
       return true;
@@ -65,10 +57,10 @@ const Home = () => {
 
   return (
     <>
-      <a href="/nominatedMovies">Click Here to See The Nominated Moves</a>
+      <a href="/nominatedMovies">Click Here to See The Nominated Movies</a>
       {fiveMoviesNominated ?
         <>
-          <h3>Congratulations! You have naominated 5 of your favorite films for the Shopify Ecommerce Movie Awards!</h3>
+          <h3>Congratulations! You have nominated 5 of your favorite films for the Shopify Ecommerce Movie Awards!</h3>
           <h4>You can see which movies you have nominated using the link above and remove any unwanted choices.</h4>
           <h4>Thanks for helping us choose the film of the year!</h4>
         </>
@@ -76,6 +68,7 @@ const Home = () => {
         <SubmissionForm
           nominatedmovieids={nominatedMovieIds}
           updateNomineesList={updateNomineesList}
+          nominatedMovieIds={nominatedMovieIds}
         />
       }
     </>
