@@ -1,4 +1,11 @@
 import React, { useState, useEffect } from "react";
+
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+
 import apiCall from '../../utils/apiCalls';
 import ImdbMovie from '../ImdbMovie'
 
@@ -36,16 +43,36 @@ const SubmissionForm = (props) => {
 
   return (
     <>
-      <h1>Submission Form</h1>
-      <form action="/imdb/findMovie" method="POST">
-        <div>
-          <label>Movie Title:</label>
-          <input type="text" name="movieName" value={userSearchString} onChange={handleInputChange} required />
-        </div>
-        <div>
-          <button type="submit" value="Submit" onClick={handleMovieSearch}>Find Your Movie</button>
-        </div>
-      </form>
+      <Container className="container text-center">
+        <form action="/imdb/findMovie" method="POST">
+          <Row classname="center-horz">
+            <Form>
+              <Form.Group controlId="movieName">
+                {/*<Form.Label>Movie Title</Form.Label>*/}
+                <Form.Control
+                  className="text-center"
+                  type="text"
+                  name="movieName"
+                  value={userSearchString}
+                  onChange={handleInputChange}
+                  placeholder='Search For a Movie Title...'
+                  required>
+                </Form.Control>
+                <Form.Text classname="text-muted"></Form.Text>
+              </Form.Group>
+            </Form>
+          </Row>
+          <Button
+            width="auto"
+            type="submit"
+            value="Submit"
+            onClick={handleMovieSearch}
+            variant='dark'
+            className="font-weight-bold">
+            Find Movie
+            </Button>
+        </form>
+      </Container>
       <ImdbMovie
         movieInfo={returnedMovieInfo}
         nominatedmovieids={props.nominatedmovieids}

@@ -1,0 +1,46 @@
+
+.container {
+  margin-top: 1em;
+}
+
+.center-horz{
+  justify-content: center;
+}
+
+.display-block {
+  display: block;
+}
+
+.max-width-400 {
+  width: 400px;
+}
+
+.max-width-200 {
+  max-width: 200px;
+}
+
+.border-black {
+  border: 1px solid black;
+}
+
+.bg-green {
+  background-color: #008060;
+  color: white;
+  font-weight: 700;
+}
+
+.text-green {
+  color: #008060;
+}
+
+.padding-t-b {
+  padding: 0em 0em 1em 0em;
+}
+
+.logo-img {
+  max-height: 100px;
+}
+
+.font-sm {
+  font-size: .75em;
+}

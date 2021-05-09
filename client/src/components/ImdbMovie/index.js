@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import dbCall from '../../utils/dbCalls';
 
 const ImdbMovie = ({ movieInfo, nominatedmovieids, updateNomineesList, clearMovieData }) => {
@@ -42,36 +46,66 @@ const ImdbMovie = ({ movieInfo, nominatedmovieids, updateNomineesList, clearMovi
   if (movieInfo.Title) {
     return (
       <>
-        {movieHasBeenNominated ?
-          < h2 > Looks like this movie has already been nominated</h2>
-          :
-          <button
-            onClick={handleNomination}
-            imdbid={movieInfo.imdbID}
-          >
-            Nominate This Movie
-        </button>
-        }
-        <h1>{movieInfo.Title}</h1>
-        <h3>{movieInfo.Year}</h3>
-        <div> With {movieInfo.Actors}</div>
-        <div>{movieInfo.Plot}</div>
-        <img src={movieInfo.Poster} alt="Movie Poster" />
+        <Container>
+
+          {movieHasBeenNominated ?
+            <Row className="text-center">
+              <h4 className="text-green">Great choice! This movie has already been nominated.</h4>
+              <p className="text-secondary">- try another search -</p>
+            </Row>
+            :
+            <></>
+          }
+          <Row>
+            <Col className='text-end'>
+              {movieHasBeenNominated ?
+                <></>
+                :
+                <Row >
+                  <Button
+                    onClick={handleNomination}
+                    imdbid={movieInfo.imdbID}
+                    className="bg-green"
+                  >
+                    Nominate This Movie
+              </Button>
+                </Row>
+              }
+              <Row className="text-end">
+                <h3>{movieInfo.Title}<span className="text-secondary"> - {movieInfo.Year}</span> </h3>
+              </Row>
+              <Row className="text-end display-block">
+                With {movieInfo.Actors}
+              </Row>
+              <Row className="text-end text-secondary">
+                {movieInfo.Plot}
+              </Row>
+            </Col>
+            <Col className="max-width-400">
+              <img src={movieInfo.Poster} alt="Movie Poster" />
+            </Col>
+
+          </Row>
+        </Container>
 
       </>
     )
   } else if (nominatedmovieids.length < 4) {
     return (
       <>
-        <h3>{statusMessage}</h3>
-        <h4>You can nominate {5 - nominatedmovieids.length} more movies.</h4>
+        <Container className="text-center">
+          <h3>{statusMessage}</h3>
+        You can nominate {5 - nominatedmovieids.length} more movies.
+        </Container>
       </>
     )
   } else {
     return (
       <>
-        <h3>{statusMessage}</h3>
-        <h4>You can nominate {5 - nominatedmovieids.length} more movie.</h4>
+        <Container className="text-center">
+          <h3>{statusMessage}</h3>
+        You can nominate {5 - nominatedmovieids.length} more movie.
+        </Container>
       </>
     )
   }

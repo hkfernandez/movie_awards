@@ -1,13 +1,14 @@
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import shopifyBag from '../../images/shopify-logo.png'
+
+import '../../utils/styles/style.css'
+
 const Header = () => {
 
   return (
-    <Container fluid>
-      <Row>
-        <h2>The Shopify Ecommerce Movie Awards Nominations</h2>
-      </Row>
-    </Container>
+    <header className="bg-green padding-t-b text-center">
+      <img src={shopifyBag} alt="shopify bag" className="logo-img" />
+      <h2 className='text-center'>Ecommerce Movie Awards Nominations</h2>
+    </header>
   )
 }
 

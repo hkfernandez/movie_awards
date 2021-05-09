@@ -1,3 +1,6 @@
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+
 const MovieDetails = props => {
 
   const handleDeleteMovie = (event) => {
@@ -8,16 +11,26 @@ const MovieDetails = props => {
       .then(props.updateNomineesList)
       .catch(err => console.log(err));
   }
-  //console.log('props passed to MovieDetails component', props);
+  console.log('props passed to MovieDetails component', props);
   return (
     <>
-      <h2>{props.title}</h2>
-      <button
-        data-movieid={props.id}
-        onClick={handleDeleteMovie}
-      >
-        Remove
-      </button>
+      <Card className="max-width-200">
+        <Card.Img
+          variant="top"
+          src={props.poster}
+          className="max-width-200" />
+        <Card.Body className="text-center">
+          <h2>{props.title}</h2>
+          {/*<Card.Text className="font-sm">{props.actors}</Card.Text>*/}
+          <Button
+            data-movieid={props.id}
+            onClick={handleDeleteMovie}
+            variant="light"
+          >
+            Remove
+      </Button>
+        </Card.Body>
+      </Card>
     </>
   )
 };

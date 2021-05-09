@@ -19,6 +19,7 @@ const imdbControllerMethods = {
           res.json(returnedMovie.data);
         }
       )
+      .catch(err => console.log(err))
   }
 }
 
