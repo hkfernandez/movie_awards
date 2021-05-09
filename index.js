@@ -22,7 +22,7 @@ app.use(routes)
 
 
 //connect to database
-mongoose.connect('mongodb://localhost/movie_awards', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/movie_awards', { useNewUrlParser: true, useUnifiedTopology: true });
 //verify the database connection
 db.on('error', console.error.bind(console, 'DB connection error:'));
 db.once('open', function () {
