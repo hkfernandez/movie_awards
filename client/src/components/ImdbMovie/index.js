@@ -47,7 +47,6 @@ const ImdbMovie = ({ movieInfo, nominatedmovieids, updateNomineesList, clearMovi
     return (
       <>
         <Container>
-
           {movieHasBeenNominated ?
             <Row className="text-center">
               <h4 className="text-green">Great choice! This movie has already been nominated.</h4>
@@ -84,7 +83,6 @@ const ImdbMovie = ({ movieInfo, nominatedmovieids, updateNomineesList, clearMovi
             <Col className="max-width-400">
               <img src={movieInfo.Poster} alt="Movie Poster" />
             </Col>
-
           </Row>
         </Container>
 

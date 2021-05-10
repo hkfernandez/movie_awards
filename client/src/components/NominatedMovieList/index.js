@@ -5,10 +5,7 @@ import MovieDetails from '../MoveDetails'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import CardDeck from 'react-bootstrap/CardDeck';
-
-
 
 const NominatedMoviesList = () => {
   const [nomineesList, setNomineesList] = useState()
@@ -23,11 +20,10 @@ const NominatedMoviesList = () => {
         if (!nominatedMovies) {
           return
         } else {
-          //console.log('movies returned from db', nominatedMovies);
           setNomineesList(nominatedMovies);
         }
       })
-      .then(() => console.log('nomineesList updated with', nomineesList))
+      .catch(err => console.log(err))
   }
 
   return (

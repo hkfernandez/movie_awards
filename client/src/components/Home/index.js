@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
 import db from '../../utils/dbCalls';
 import SubmissionForm from '../SubmissionForm';
 
@@ -12,7 +10,6 @@ import '../../utils/styles/style.css'
 
 const Home = () => {
 
-  //const [moviesInDb, setMoviesInDb] = useState([]);
   const [nominatedMovieIds, setNominatedMovieIds] = useState([]);
   const [fiveMoviesNominated, setFiveMoviesNominated] = useState(false);
   const [aMovieHasBeenNominated, setAMovieHasBeenNominated] = useState();
@@ -28,20 +25,18 @@ const Home = () => {
   const updateNomineesList = () => {
     db.findAll()
       .then((nominatedMovies) => {
-        //console.log('nominated movies', nominatedMovies);
         if (!nominatedMovies) {
           return;
         } else {
-          //setMoviesInDb(nominatedMovies.data);
           buildArrOfMovieIdsInDb(nominatedMovies.data);
           return nominatedMovies;
         }
       })
       .then(() => { checkIfAMovieHasBeenNominated(); })
+      .catch(err => console.log(err));
   }
 
   const checkIfAMovieHasBeenNominated = () => {
-    console.log('checking if movie has been nominated');
     if (nominatedMovieIds.length === 0) {
       setAMovieHasBeenNominated(false);
       return false;
@@ -52,10 +47,8 @@ const Home = () => {
   }
 
   const buildArrOfMovieIdsInDb = (movies) => {
-    //console.log('building array of movies in db with', movies);
     let movieIdsArr = [];
     movies.map(movie => {
-      //console.log('building movie id array with ', movie.imdbID);
       return movieIdsArr.push(movie.imdbID);
     })
     setNominatedMovieIds(movieIdsArr);
@@ -63,8 +56,6 @@ const Home = () => {
   }
 
   const checkIfFiveMoviesHaveBeenNominated = () => {
-    //console.log('checking if five movies have been nominated', nominatedMovieIds.length);
-    //console.log('five movies have been nominated?', fiveMoviesNominated);
     if (nominatedMovieIds.length > 4) {
       setFiveMoviesNominated(true);
     } else {

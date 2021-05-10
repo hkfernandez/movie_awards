@@ -2,36 +2,34 @@ const db = require("../models");
 
 const dbControllerMethods = {
   findOne: (req, res) => {
-    console.log('--------------------findOne db route hit', req.body);
     db.findOne()
       .then(returnedMovie => {
-        //console.log('movie returned in controller', returnedMovie);
         res.json(returnedMovie)
       })
+      .catch(err => console.log(err));
   },
   findAll: (req, res) => {
-    console.log('--------------------findAll db route hit');
     db.find()
       .then(returnedMovies => {
         res.json(returnedMovies)
       })
+      .catch(err => console.log(err));
   },
   create: (req, res) => {
-    console.log('--------------------create db route hit with req.body ', req.body);
     let nominatedMovie = req.body
     db.create(nominatedMovie)
       .then(addedMoive => {
-        console.log('------------------movie added to db');
         res.json(addedMoive);
       })
+      .catch(err => console.log(err));
   },
   delete: (req, res) => {
-    console.log('--------------------delete db route hit with req.body ', req.body);
     let movieToDelete = req.body
     db.findOneAndDelete(movieToDelete)
       .then(deletedMoive => {
         res.json(deletedMoive);
       })
+      .catch(err => console.log(err));
   }
 }
 
