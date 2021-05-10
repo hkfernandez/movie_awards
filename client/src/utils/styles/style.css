@@ -13,7 +13,7 @@
 }
 
 .max-width-400 {
-  width: 400px;
+  width: 300px !important;
 }
 
 .max-width-200 {

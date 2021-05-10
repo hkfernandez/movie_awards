@@ -46,7 +46,7 @@ const ImdbMovie = ({ movieInfo, nominatedmovieids, updateNomineesList, clearMovi
   if (movieInfo.Title) {
     return (
       <>
-        <Container>
+        <Container >
           {movieHasBeenNominated ?
             <Row className="text-center">
               <h4 className="text-green">Great choice! This movie has already been nominated.</h4>
@@ -55,8 +55,8 @@ const ImdbMovie = ({ movieInfo, nominatedmovieids, updateNomineesList, clearMovi
             :
             <></>
           }
-          <Row>
-            <Col className='text-end'>
+          <Row className='center-horz'>
+            <section className='text-end max-width-400 display-block'>
               {movieHasBeenNominated ?
                 <></>
                 :
@@ -79,10 +79,10 @@ const ImdbMovie = ({ movieInfo, nominatedmovieids, updateNomineesList, clearMovi
               <Row className="text-end text-secondary">
                 {movieInfo.Plot}
               </Row>
-            </Col>
-            <Col className="max-width-400">
+            </section>
+            <div className="max-width-400">
               <img src={movieInfo.Poster} alt="Movie Poster" />
-            </Col>
+            </div>
           </Row>
         </Container>
 
